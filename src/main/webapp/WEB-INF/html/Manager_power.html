@@ -10,25 +10,13 @@
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
-<!--<div style="margin-bottom: 5px;">-->
 
-<!--    &lt;!&ndash; 示例-970 &ndash;&gt;-->
-<!--    <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>-->
-
-<!--</div>-->
-
-<!--<div class="layui-btn-group demoTable">-->
-<!--    <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>-->
-<!--    <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>-->
-<!--    <button class="layui-btn" data-type="isAll">验证是否全选</button>-->
-<!--</div>-->
-
-<table class="layui-table" lay-data="{url:'../../resources/JSON/usermassage.json', page:true, id:'power'}" lay-filter="demo">
+<table class="layui-table" lay-data="{url:'', page:true, id:'power'}" lay-filter="demo">
     <thead>
     <tr>
 <!--        <th lay-data="{type:'checkbox', fixed: 'left'}"></th>-->
 <!--        <th lay-data="{field:'id', width:150, sort: true, fixed: true}">ID</th>-->
-        <th lay-data="{field:'power',edit: 'text'}">权限</th>
+        <th lay-data="{field:'accessId',edit: 'text' }">权限</th>
         <th lay-data="{field:'url',edit: 'text'}">Urls</th>
 <!--        <th lay-data="{field:'birth', width:150, sort: true}">生日</th>-->
         <th lay-data="{fixed: 'right', align:'center', toolbar: '#barDemo'}">操作</th>
@@ -37,53 +25,12 @@
 </table>
 
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" name={}>删除</a>
 </script>
-
 
 <script src="../../resources/layui/layui.js" charset="utf-8"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-<script>
-    layui.use('table', function(){
-        var table = layui.table;
-        //监听表格复选框选择
-        table.on('checkbox(demo)', function(obj){
-            console.log(obj)
-        });
-        //监听工具条
-        table.on('tool(demo)', function(obj){
-            var data = obj.data;
-            if(obj.event === 'del'){
-                layer.confirm('真的删除行么', function(index){
-                    obj.del();
-                    layer.close(index);
-                });
-            }
-        });
-
-        var $ = layui.$, active = {
-            getCheckData: function(){ //获取选中数据
-                var checkStatus = table.checkStatus('power')
-                    ,data = checkStatus.data;
-                layer.alert(JSON.stringify(data));
-            }
-            ,getCheckLength: function(){ //获取选中数目
-                var checkStatus = table.checkStatus('power')
-                    ,data = checkStatus.data;
-                layer.msg('选中了：'+ data.length + ' 个');
-            }
-            ,isAll: function(){ //验证是否全选
-                var checkStatus = table.checkStatus('power');
-                layer.msg(checkStatus.isAll ? '全选': '未全选')
-            }
-        };
-
-        $('.demoTable .layui-btn').on('click', function(){
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
-        });
-    });
-</script>
+<script type="text/javascript" src="../../resources/js/common/jquery.min.js"></script>
+<script type="text/javascript" src="../../resources/js/manage/Manager_power.js"></script>
 
 </body>
 </html>

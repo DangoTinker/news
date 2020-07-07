@@ -5,9 +5,9 @@
     <title>Title</title>
     <<link href="resources/css/user_admin/login.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
     <link href="resources/css/user_admin/demo.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="resources/js/user_admin/jquery1.42.min.js"></script>
-    <script type="text/javascript" src="resources/js/user_admin/jquery.SuperSlide.js"></script>
-    <script type="text/javascript" src="resources/js/user_admin/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="resources/js/common/jquery1.42.min.js"></script>
+    <script type="text/javascript" src="resources/js/common/jquery.SuperSlide.js"></script>
+    <script type="text/javascript" src="resources/js/common/Validform_v5.3.2_min.js"></script>
 
     <script>
         $(function(){
@@ -97,13 +97,13 @@
             <form class="registerform"action="demo/ajax_post.jsp">
                 <div class="fm-item">
                     <label for="logonId" class="form-label">管理员账号：</label>
-                    <input type="text" value="输入账号" maxlength="100" id="username" class="i-text" ajaxurl="demo/valid.jsp"  datatype="s6-18" errormsg="用户名至少6个字符,最多18个字符！"  >
+                    <input type="text" value="账号" maxlength="100" id="username" class="i-text" ajaxurl="demo/valid.jsp"  datatype="s6-18" errormsg="用户名至少6个字符,最多18个字符！"  >
                     <div class="ui-form-explain"></div>
                 </div>
 
                 <div class="fm-item">
                     <label for="logonId" class="form-label">管理员密码：</label>
-                    <input type="password" value="" maxlength="100" id="password" class="i-text" datatype="*6-16" nullmsg="请设置密码！" errormsg="密码范围在6~16位之间！">
+                    <input type="password" value="密码" maxlength="100" id="password" class="i-text" datatype="*6-16" nullmsg="请设置密码！" errormsg="密码范围在6~16位之间！">
                     <div class="ui-form-explain"></div>
                 </div>
 
@@ -136,6 +136,6 @@
 
 
 <div class="banner-shadow"></div>
-
+<script type="text/javascript" src="resources/js/user_admin/admin_sign_in.js"></script>
 </body>
 </html>

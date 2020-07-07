@@ -4,9 +4,9 @@ $(document).ready(function () {
         let email=$("#semail").val()
         $.ajax({
             type:"GET",
-            url:'/checkUserId',
+            url:'/checkUserEmail',
             async:true,
-            data:{"userId":email},
+            data:{"email":email},
             dataType:"json",
             success:function (data) {
                 let s=data.success
@@ -20,23 +20,23 @@ $(document).ready(function () {
                 console.log("请求失败")
             }
         })
-        $(".form-control-submit-button").click(function () {
+        $("#signUp").click(function () {
             let email=$('#semail').val()
             let username=$('#sname').val()
             let password=$('#spassword').val()
-            let gender='未知'
             $.ajax({
                 type:"GET",
                 url:'/userSignUp',
                 async:true,
-                data:{"userId":email,"username":username,"password":password,"gender":gender},
+                data:{"email":email,"username":username,"password":password},
                 dataType:"json",
                 success:function (data) {
                     let s=data.success
                     if(s){
-
+                        alert("创建用户成功")
+                        location.href="index.html"
                     }else{
-                        alert("请稍后重试")
+                        alert("创建用户失败,请稍后重试")
                     }
                 },
                 error:function () {

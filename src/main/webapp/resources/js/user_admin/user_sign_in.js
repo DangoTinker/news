@@ -6,7 +6,7 @@ $(document).ready(function () {
             type:"GET",
             url:'/checkUserId',
             async: true,
-            data:{"userID":userId},
+            data:{"userId":userId},
             dataType: "json",
             success:function (data) {
                 let s=data.success

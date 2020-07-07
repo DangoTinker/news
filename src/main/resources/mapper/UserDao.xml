@@ -11,21 +11,21 @@
     </resultMap>
     <select id="queryUserById" parameterType="Long" resultMap="userMap">
         select *
-        from user
+        from tb_user
         where user_id=#{userId}
     </select>
     <select id="queryUserSignIn" resultMap="userMap" parameterType="java.lang.String">
         select email,password
-        from user
+        from tb_user
         where email=#{email} and password=#{password}
     </select>
     <select id="queryUser" resultMap="userMap" parameterType="java.lang.Long">
         select *
-        from user
+        from tb_user
         where user_id=#{userID}
     </select>
     <insert id="insertUser" parameterType="o2oboot.entity.User">
-        insert into user (
+        insert into tb_user (
         user_id,username,email,password
         )
         values (
@@ -36,7 +36,7 @@
         )
     </insert>
     <update id="updateUser" parameterType="o2oboot.entity.User">
-        update user
+        update tb_user
         <set>
             <if test="user_id != null">user_id=#{userId}</if>
             <if test="username != null">username=#{username}</if>

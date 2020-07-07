@@ -9,15 +9,15 @@
         <result column="accesses" property="accesses"/>
     </resultMap>
     <insert id="inserRole" parameterType="o2oboot.entity.access.Role">
-        insert into role(role_id,role_name,accesses)
+        insert into tb_role(role_id,role_name,accesses)
         values (#{roleId},#{roleName},#{accesses})
     </insert>
     <select id="queryRoleById" resultMap="baseMap" parameterType="java.lang.Long">
-        select * from role
+        select * from tb_role
         where role_id=#{roleId}
     </select>
     <update id="updateRole" parameterType="o2oboot.entity.access.Role">
-        update role
+        update tb_role
         <set>
             <if test="role_id!=null">role_id=#{roleId}</if>
             <if test="role_name!=null">role_name=#{roleName}</if>
@@ -26,9 +26,9 @@
         where role_id=#{roleId}
     </update>
     <delete id="deleteRole" parameterType="java.lang.Long">
-        delete from role where role_id=#{roleId}
+        delete from tb_role where role_id=#{roleId}
     </delete>
     <select id="queryAllRole" resultMap="baseMap">
-        select * from role
+        select * from tb_role
     </select>
 </mapper>

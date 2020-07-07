@@ -11,11 +11,11 @@
     </resultMap>
     <select id="queryAccessByUrl" resultMap="baseMap" parameterType="java.lang.String">
         select access_id,access_name,url,access_number
-        from access
+        from tb_access
         where url=#{url}
     </select>
     <insert id="insertAccess" parameterType="o2oboot.entity.access.Access">
-        insert into access(
+        insert into tb_access(
         access_id,access_name,url,access_name
         )
         values (
@@ -33,12 +33,12 @@
         where access_id=#{accessId}
     </update>
     <delete id="deleteAccess" parameterType="java.lang.Long">
-        delete from access where access_id=#{accessId }
+        delete from tb_access where access_id=#{accessId }
     </delete>
     <select id="queryAccessById" resultMap="baseMap" parameterType="java.lang.Long">
-        select access_id from access where access_id=#{accessId}
+        select access_id from tb_access where access_id=#{accessId}
     </select>
     <select id="queryAllAccess" resultMap="baseMap">
-        select * from access
+        select * from tb_access
     </select>
 </mapper>
