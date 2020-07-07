@@ -7,7 +7,30 @@ $(document).ready(function () {
         });
         //监听工具条
         table.on('tool(demo)', function(obj){
-            let data = obj.data;
+            var value = obj.value //得到修改后的值
+                ,data = obj.data //得到所在行所有键值
+                ,field = obj.field; //得到字段
+            //修改
+            $.ajax({
+                type:"post",
+                url:'',
+                async: true,
+                data:{"id":data.id,'field':field,"value":value},
+                dataType: "json",
+                success:function (data) {
+                    let s=data.success
+                    if(s){
+                        alert("修改成功")
+                    }else{
+                        alert("修改失败")
+                    }
+                },
+                error:function () {
+                    console.log("请求失败")
+                }
+            })
+
+            //删除
             if(obj.event === 'del'){
                 layer.confirm('真的删除行么', function(index){
                     $.ajax({
