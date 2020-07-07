@@ -8,7 +8,29 @@ $(document).ready(function () {
                 ,data = obj.data //得到所在行所有键值
                 ,field = obj.field; //得到字段
             layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
-        });
+            if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    $.ajax({
+                        type:"GET",
+                        url:'',
+                        async: true,
+                        data:{"accessId":data.id},
+                        dataType: "json",
+                        success:function (data) {
+                            let s=data.success
+                            if(s){
+                                obj.del();
+                            }else{
+                                alert("删除失败")
+                            }
+                        },
+                        error:function () {
+                            console.log("请求失败")
+                        }
+                    })
+                    layer.close(index);
+                });
+            }        });
 
 
     });
