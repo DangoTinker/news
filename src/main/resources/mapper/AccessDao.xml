@@ -27,7 +27,6 @@
         <set>
             <if test="access_name!=null">access_name=#{accessName}</if>
             <if test="url!=null">url=#{url}</if>
-          `
         </set>
         where access_id=#{accessId}
     </update>
