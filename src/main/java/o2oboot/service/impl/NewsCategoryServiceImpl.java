@@ -5,9 +5,10 @@ import o2oboot.dto.NewsCategoryExecution;
 import o2oboot.entity.NewsCategory;
 import o2oboot.service.NewsCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class NewsCategoryServiceImpl implements NewsCategoryService {
     @Autowired
     private NewsCategoryDao newsCategoryDao;

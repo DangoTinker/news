@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="o2oboot.dao.AccessRoleMapDao">
+
+    <insert id="addAccessRoleMap">
+        insert into tb_access_role_map(
+        access_id,role_id
+        )
+        values (
+        #{access.accessId},#{role.roleId}
+        )
+    </insert>
+
+    <delete id="deleteAccessRoleMap" >
+        delete from tb_access_role_map where access_id=#{access.accessId } and role_id=#{role.roleId}
+    </delete>
+    <select id="queryAllAccessByRoleId" resultType="o2oboot.entity.Access" parameterType="java.lang.Long">
+        select * from tb_access_role_map where role_id=#{roleId}
+    </select>
+
+</mapper>

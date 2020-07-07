@@ -3,32 +3,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="o2oboot.dao.AccessDao">
-    <resultMap id="baseMap" type="o2oboot.entity.access">
-        <id column="access_id" property="accessID"/>
+    <resultMap id="baseMap" type="o2oboot.entity.Access">
+        <id column="access_id" property="accessId"/>
         <result column="access_name" property="accessName"/>
         <result column="url" property="url"/>
-        <result column="access_number" property="accessName"/>
+
     </resultMap>
     <select id="queryAccessByUrl" resultMap="baseMap" parameterType="java.lang.String">
-        select access_id,access_name,url,access_number
+        select access_id,access_name,url
         from tb_access
         where url=#{url}
     </select>
-    <insert id="insertAccess" parameterType="o2oboot.entity.access.Access">
+    <insert id="insertAccess" parameterType="o2oboot.entity.Access">
         insert into tb_access(
-        access_id,access_name,url,access_name
+        access_name,url
         )
         values (
-        #{accessId},#{accessName},#{url},#{accessNumber}
+        #{accessName},#{url}
         )
     </insert>
-    <update id="updateAccess" parameterType="o2oboot.entity.access.Access">
-        update access
+    <update id="updateAccess" parameterType="o2oboot.entity.Access">
+        update tb_access
         <set>
-            <if test="access_id!=null">access_id=#{accessId}</if>
             <if test="access_name!=null">access_name=#{accessName}</if>
             <if test="url!=null">url=#{url}</if>
-            <if test="access_number!=null">access_number=#{accessNumber}</if>
+          `
         </set>
         where access_id=#{accessId}
     </update>
@@ -36,7 +35,7 @@
         delete from tb_access where access_id=#{accessId }
     </delete>
     <select id="queryAccessById" resultMap="baseMap" parameterType="java.lang.Long">
-        select access_id from tb_access where access_id=#{accessId}
+        select * from tb_access where access_id=#{accessId}
     </select>
     <select id="queryAllAccess" resultMap="baseMap">
         select * from tb_access

@@ -7,15 +7,15 @@ import java.util.List;
 public interface UserService {
     int addUser(User user);
 
-    int checkUserSingIn(String email, String password);
+    int checkUserSingIn(String userId, String password);
 
-    int checkUserEmail(String email);
+    int checkUserId(String userName);
 
-    User getUserDetail(Long userId);
+    User getUserDetail(String userId);
 
     int modifyUser(User user);
 
     List<User> queryAllUser();
 
-    Long queryMaxUserId();
+    Long getUserIdByUsername(String username);
 }

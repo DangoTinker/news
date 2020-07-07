@@ -4,35 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="o2oboot.dao.UserDao">
     <resultMap id="userMap" type="o2oboot.entity.User">
-        <id column="user_id" property="userId"></id>
-        <result column="username" property="username"/>
-        <result column="password" property="password"/>
-        <result column="email" property="email"/>
+        <id column="user_id" property="userId" jdbcType="VARCHAR"></id>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
     </resultMap>
-    <select id="queryUserById" parameterType="Long" resultMap="userMap">
+    <select id="queryUserById" parameterType="String" resultMap="userMap">
         select *
         from tb_user
         where user_id=#{userId}
     </select>
-    <select id="queryUserSignIn" resultMap="userMap" parameterType="java.lang.String">
-        select email,password
+    <select id="queryUserSignIn" resultMap="userMap" parameterType="String">
+        select user_name,password
         from tb_user
-        where email=#{email} and password=#{password}
+        where user_name=#{userId} and password=#{password}
     </select>
-    <select id="queryUser" resultMap="userMap" parameterType="java.lang.Long">
+    <select id="queryUser" resultMap="userMap" parameterType="String">
         select *
         from tb_user
-        where user_id=#{userID}
+        where user_id=#{userId}
     </select>
     <insert id="insertUser" parameterType="o2oboot.entity.User">
         insert into tb_user (
-        user_id,username,email,password
+        username,password,gender
         )
         values (
-        #{userId},
+
         #{username},
-        #{email},
-        #{password},
+        #{password}, #{gender}
         )
     </insert>
     <update id="updateUser" parameterType="o2oboot.entity.User">
@@ -40,15 +38,16 @@
         <set>
             <if test="user_id != null">user_id=#{userId}</if>
             <if test="username != null">username=#{username}</if>
-            <if test="email!=null">email=#{email}</if>
             <if test="password != null">password=#{password}</if>
         </set>
         where user_id=#{userId}
     </update>
     <select id="queryAllUser" resultMap="userMap">
-        select * from user
+        select * from tb_user
     </select>
-    <select id="queryMaxUserId" resultType="java.lang.Long">
-        select max(user_id)  from user
+
+    <select id="queryUserIdByUsername" parameterType="java.lang.String">
+        select user_id from tb_user where username=#{username}
     </select>
+
 </mapper>

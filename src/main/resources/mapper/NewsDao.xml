@@ -6,13 +6,15 @@
 <mapper namespace="o2oboot.dao.NewsDao">
     <insert id="insertNews" parameterType="o2oboot.entity.News" useGeneratedKeys="true"
             keyColumn="news_id" keyProperty="newsId">
-        insert into tb_news(        news_id,news_name,news_category_id,views,priority,create_time
+        insert into tb_news(        news_name,news_category_id,views,priority,create_time
         ) values(
-            #{newsId},#{newsName},#{newsCategory.newsCategoryId}
-            ,#{views},#{priority}#{createTime}
-        )
+            #{newsName},#{newsCategory.newsCategoryId}
+            ,#{views},#{priority},#{createTime} )
     </insert>
+    <delete id="deleteNews" parameterType="java.lang.Long">
+        delete from tb_news where news_id=#{newsId}
 
+    </delete>
     <update id="updateNews" parameterType="o2oboot.entity.News" >
 
         update tb_news
@@ -78,7 +80,7 @@
         from
         tb_news n,tb_news_Category nc
         where
-        n.shop_category_id=nc.shop_category_id
+        n.news_category_id=nc.news_category_id
 
 
     </select>
@@ -118,7 +120,7 @@
 
 
             and
-            n.shop_category_id=nc.shop_category_id
+            n.news_category_id=nc.news_category_id
 
 
 
@@ -161,7 +163,7 @@
 
 
             and
-            n.shop_category_id=nc.shop_category_id
+            n.news_category_id=nc.news_category_id
 
 
 

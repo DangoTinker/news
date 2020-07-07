@@ -2,10 +2,12 @@ package o2oboot.service.impl;
 
 import o2oboot.dao.RoleUserMapDao;
 import o2oboot.entity.User;
-import o2oboot.entity.access.Role;
+import o2oboot.entity.Role;
 import o2oboot.service.RoleUserMapService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RoleUserMapServiceImpl implements RoleUserMapService {
     @Autowired
     private RoleUserMapDao roleUserMapDao;
@@ -22,5 +24,10 @@ public class RoleUserMapServiceImpl implements RoleUserMapService {
     @Override
     public int updateRoleUserMap(Role role, User user) {
         return roleUserMapDao.updateRoleUserMap(role,user);
+    }
+
+    @Override
+    public Role queryRoleByUserId(Long userId) {
+        return roleUserMapDao.queryRoleByUserId(userId);
     }
 }

@@ -1,8 +1,9 @@
 package o2oboot.config.web;
 
 import com.google.code.kaptcha.servlet.KaptchaServlet;
-import dlnu.o2oboot.interceptor.shopadmin.ShopLoginInterceptor;
-import dlnu.o2oboot.interceptor.shopadmin.ShopPermissionInterceptor;
+
+import o2oboot.interceptor.LoginInterceptor;
+import o2oboot.interceptor.PermissionInterceptor;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -109,41 +110,21 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         /** 店家管理系统拦截部分 **/
-        String interceptPath = "/shopadmin/**";
+        String interceptPath = "/news/**";
         // 注册拦截器
-        InterceptorRegistration loginIR = registry.addInterceptor(new ShopLoginInterceptor());
+        InterceptorRegistration loginIR = registry.addInterceptor(new LoginInterceptor());
         // 配置拦截的路径
         loginIR.addPathPatterns(interceptPath);
-        /** shopauthmanagement page **/
-        loginIR.excludePathPatterns("/shopadmin/addshopauthmap");
-        /** scan **/
-        loginIR.excludePathPatterns("/shopadmin/adduserproductmap");
-        loginIR.excludePathPatterns("/shopadmin/exchangeaward");
+
+//        /** shopauthmanagement page **/
+//        loginIR.excludePathPatterns("/shopadmin/addshopauthmap");
+//        /** scan **/
+//        loginIR.excludePathPatterns("/shopadmin/adduserproductmap");
+//        loginIR.excludePathPatterns("/shopadmin/exchangeaward");
 //         还可以注册其它的拦截器
-        InterceptorRegistration permissionIR = registry.addInterceptor(new ShopPermissionInterceptor());
+        InterceptorRegistration permissionIR = registry.addInterceptor(new PermissionInterceptor());
         // 配置拦截的路径
-        permissionIR.addPathPatterns(interceptPath);
-        // 配置不拦截的路径
-        /** shoplist page **/
-        permissionIR.excludePathPatterns("/shopadmin/shoplist");
-        permissionIR.excludePathPatterns("/shopadmin/getshoplist");
-
-
-
-
-        /** shopregister page **/
-        permissionIR.excludePathPatterns("/shopadmin/shopinitinfo");
-        permissionIR.excludePathPatterns("/shopadmin/registershop");
-        permissionIR.excludePathPatterns("/shopadmin/shopoperation");
-        /** shopmanage page **/
-        permissionIR.excludePathPatterns("/shopadmin/shopmanagement");
-        permissionIR.excludePathPatterns("/shopadmin/getshopmanagementinfo");
-        /** shopauthmanagement page **/
-        permissionIR.excludePathPatterns("/shopadmin/addshopauthmap");
-        /** scan **/
-        permissionIR.excludePathPatterns("/shopadmin/adduserproductmap");
-        permissionIR.excludePathPatterns("/shopadmin/exchangeaward");
-
+        permissionIR.addPathPatterns("/news/addNews","/news/deleteNews","/news/modifyNews");
 
     }
 

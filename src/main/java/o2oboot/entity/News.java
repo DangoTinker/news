@@ -12,6 +12,15 @@ public class News {
     public News() {
     }
 
+    public News(Long newsId, String newsName, NewsCategory newsCategory, Integer views, Integer priority, Date createTime) {
+        this.newsId = newsId;
+        this.newsName = newsName;
+        this.newsCategory = newsCategory;
+        this.views = views;
+        this.priority = priority;
+        this.createTime = createTime;
+    }
+
     public News(Long newsId, String newsName, NewsCategory newsCategory, Integer views, Integer priority) {
         this.newsId = newsId;
         this.newsName = newsName;

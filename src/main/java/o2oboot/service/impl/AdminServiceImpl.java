@@ -3,7 +3,9 @@ package o2oboot.service.impl;
 import o2oboot.dao.AdminDao;
 import o2oboot.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AdminServiceImpl implements AdminService {
 
     @Autowired

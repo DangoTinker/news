@@ -4,8 +4,9 @@ import o2oboot.dao.UserDao;
 import o2oboot.entity.User;
 import o2oboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 ;import java.util.List;
-
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -22,12 +23,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int checkUserEmail(String email) {
-        return userDao.queryUserByEmail(email);
+    public int checkUserId(String userId) {
+        return userDao.queryUserById(userId);
     }
 
     @Override
-    public User getUserDetail(Long userId) {
+    public User getUserDetail(String userId) {
         return userDao.queryUser(userId);
     }
 
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Long queryMaxUserId() {
-        return userDao.queryMaxUserId();
+    public Long getUserIdByUsername(String username) {
+        return userDao.queryUserIdByUsername(username);
     }
 }

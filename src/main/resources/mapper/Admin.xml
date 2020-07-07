@@ -11,7 +11,7 @@
     </resultMap>
     <select id="queryAdminSignIn" resultMap="adminMap" parameterType="String">
         select admin_id,admin_password
-        from tb_admin
+        from admin
         where admin_id=#{adminID} and admin_password=#{adminPassword}
     </select>
 </mapper>

@@ -1,9 +1,7 @@
 package o2oboot.web.access;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import o2oboot.entity.access.Access;
+import o2oboot.entity.Access;
 import o2oboot.service.AccessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/ac")
@@ -48,7 +48,7 @@ public class AccessController {
     @ResponseBody
     public Map<String,Object> accessList(){
         Map<String,Object> map=new HashMap<>();
-        List<Access> list;
+        List<Access> list=new LinkedList<>();
 
         list=accessService.queryAllAccess();
         if(list.size()!=0){
@@ -75,6 +75,8 @@ public class AccessController {
         }
         return map;
     }
+
+
 
 
 }

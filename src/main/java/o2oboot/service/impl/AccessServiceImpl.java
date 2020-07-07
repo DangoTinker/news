@@ -1,12 +1,13 @@
 package o2oboot.service.impl;
 
 import o2oboot.dao.AccessDao;
-import o2oboot.entity.access.Access;
+import o2oboot.entity.Access;
 import o2oboot.service.AccessService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class AccessServiceImpl implements AccessService {
 
     @Autowired

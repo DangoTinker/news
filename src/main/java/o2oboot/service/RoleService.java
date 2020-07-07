@@ -1,7 +1,7 @@
 package o2oboot.service;
 
-import o2oboot.entity.access.Access;
-import o2oboot.entity.access.Role;
+import o2oboot.entity.Access;
+import o2oboot.entity.Role;
 
 import java.util.List;
 

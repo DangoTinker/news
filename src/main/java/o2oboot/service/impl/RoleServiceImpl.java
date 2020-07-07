@@ -1,15 +1,14 @@
 package o2oboot.service.impl;
 
-import o2oboot.dao.AccessRoleMapDao;
 import o2oboot.dao.RoleDao;
-import o2oboot.entity.access.Access;
-import o2oboot.entity.access.Role;
+import o2oboot.entity.Access;
+import o2oboot.entity.Role;
 import o2oboot.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class RoleServiceImpl implements RoleService {
 
     @Autowired

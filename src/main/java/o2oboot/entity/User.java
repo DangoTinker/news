@@ -3,17 +3,17 @@ package o2oboot.entity;
 public class User {
     private Long userId;
     private String username;
-    private String email;
     private String password;
+    private String gender;
 
     public User() {
     }
 
-    public User(Long userID, String username, String password, String email) {
+    public User(Long userID, String username, String password, String gender) {
         this.userId = userID;
         this.username = username;
         this.password = password;
-        this.email=email;
+        this.gender = gender;
     }
 
     public Long getUserId() {
@@ -40,11 +40,11 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getGender() {
+        return gender;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

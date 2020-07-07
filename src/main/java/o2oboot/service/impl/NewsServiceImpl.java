@@ -6,10 +6,11 @@ import o2oboot.entity.News;
 import o2oboot.entity.NewsCategory;
 import o2oboot.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-
+@Service
 public class NewsServiceImpl implements NewsService {
     @Autowired
     private NewsDao newsDao;
