@@ -5,15 +5,19 @@ public class User {
     private String username;
     private String password;
     private String gender;
+    private String email;
+    private String birth;
 
-    public User() {
-    }
-
-    public User(Long userID, String username, String password, String gender) {
-        this.userId = userID;
+    public User(Long userId, String username, String password, String gender, String email, String birth) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
         this.gender = gender;
+        this.email = email;
+        this.birth = birth;
+    }
+
+    public User() {
     }
 
     public Long getUserId() {
@@ -46,5 +50,21 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

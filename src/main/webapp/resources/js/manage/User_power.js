@@ -5,12 +5,15 @@ $(document).ready(function () {
         table.on('checkbox(demo)', function(obj){
             console.log(obj)
         });
-        //监听工具条
-        table.on('tool(demo)', function(obj){
+
+
+        //修改
+        table.on('edit(demo)',function () {
+
             var value = obj.value //得到修改后的值
                 ,data = obj.data //得到所在行所有键值
                 ,field = obj.field; //得到字段
-            //修改
+
             $.ajax({
                 type:"post",
                 url:'',
@@ -29,7 +32,12 @@ $(document).ready(function () {
                     console.log("请求失败")
                 }
             })
-            //删除
+        })
+        //监听工具条
+        //删除
+        table.on('tool(demo)', function(obj){
+            var data = obj.data //得到所在行所有键值
+
             if(obj.event === 'del'){
                 layer.confirm('真的删除行么', function(index){
                     $.ajax({

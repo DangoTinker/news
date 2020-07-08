@@ -9,8 +9,6 @@ public interface UserService {
 
     int checkUserSingIn(String userId, String password);
 
-    int checkUserId(String userName);
-
     User getUserDetail(String userId);
 
     int modifyUser(User user);
@@ -18,4 +16,8 @@ public interface UserService {
     List<User> queryAllUser();
 
     Long getUserIdByUsername(String username);
+
+    int checkEmail(String email);
+
+    Long getMaxUSerId();
 }

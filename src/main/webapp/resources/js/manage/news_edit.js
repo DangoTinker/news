@@ -3,12 +3,13 @@ $(document).ready(function () {
         var table = layui.table;
 
         //监听单元格编辑
+        //修改
         table.on('edit(test3)', function(obj){
+
             var value = obj.value //得到修改后的值
                 ,data = obj.data //得到所在行所有键值
                 ,field = obj.field; //得到字段
 
-            //修改
             $.ajax({
                 type:"post",
                 url:'',
@@ -27,16 +28,22 @@ $(document).ready(function () {
                     console.log("请求失败")
                 }
             })
+            layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+        });
 
+        //监听
+        //删除
+        table.on('tool(text3)',function (obj) {
 
-            // layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+            var data = obj.data //得到所在行所有键值
+
             if(obj.event === 'del'){
                 layer.confirm('真的删除行么', function(index){
                     $.ajax({
                         type:"GET",
                         url:'',
                         async: true,
-                        data:{"accessId":data.id},
+                        data:{"newsId":data.id},
                         dataType: "json",
                         success:function (data) {
                             let s=data.success
@@ -54,5 +61,7 @@ $(document).ready(function () {
                 });
             }
         });
+
+
     });
 })

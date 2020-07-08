@@ -1,6 +1,7 @@
 package o2o.service;
 
 import o2o.BaseTest;
+import o2oboot.service.NewsService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,5 +15,10 @@ public class AreaServiceTest extends BaseTest {
 //        assertEquals(3,areaService.getAreaList().size());
 //
 //    }
-
+    @Autowired
+    private NewsService newsService;
+    @Test
+    public void a(){
+        System.out.println(newsService.getNewsById((long) 1));
+    }
 }

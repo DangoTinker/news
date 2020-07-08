@@ -22,10 +22,10 @@ public class UserServiceImpl implements UserService {
         return userDao.queryUserSignIn(userId,password);
     }
 
-    @Override
-    public int checkUserId(String userId) {
-        return userDao.queryUserById(userId);
-    }
+//    @Override
+//    public int checkUserId(String userId) {
+//        return userDao.queryUserById(userId);
+//    }
 
     @Override
     public User getUserDetail(String userId) {
@@ -45,5 +45,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public Long getUserIdByUsername(String username) {
         return userDao.queryUserIdByUsername(username);
+    }
+
+    @Override
+    public int checkEmail(String email) {
+        return 0;
+    }
+
+    @Override
+    public Long getMaxUSerId() {
+        return null;
     }
 }

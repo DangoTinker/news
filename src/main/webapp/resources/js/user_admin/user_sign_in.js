@@ -35,7 +35,7 @@ $(document).ready(function () {
             success:function (data) {
                 let s=data.success
                 if(s){
-
+                    location.href=""
                 }else{
                     alert("用户名或密码错误")
                     $("#userID").empty()

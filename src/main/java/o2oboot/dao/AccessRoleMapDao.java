@@ -12,8 +12,5 @@ import java.util.List;
 public interface AccessRoleMapDao {
     int addAccessRoleMap(@Param("access")Access access, @Param("role")Role role);
     int deleteAccessRoleMap(@Param("access")Access access,@Param("role")Role role);
-
     List<Access> queryAllAccessByRoleId(Long roleId);
-
-
 }

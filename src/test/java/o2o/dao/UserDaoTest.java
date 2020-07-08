@@ -26,7 +26,7 @@ public class UserDaoTest extends BaseTest {
     }
     @Test
     public void insertUserTest(){
-        userDao.insertUser(new User((long) 3,"3","3","3"));
+        userDao.insertUser(new User((long) 3,"3","3","3","3","3"));
     }
     @Test
     public void deleteUserTest(){

@@ -29,6 +29,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public News getNewsById(Long newsId) {
+        System.out.println(newsDao.queryNewsById((long) 1));
         return newsDao.queryNewsById(newsId);
     }
 

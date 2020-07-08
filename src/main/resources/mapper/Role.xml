@@ -3,12 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="o2oboot.dao.RoleDao">
-    <resultMap id="baseMap" type="o2oboot.entity.access.Role">
+    <resultMap id="baseMap" type="o2oboot.entity.Role">
         <id column="role_id" property="roleId"/>
         <result column="role_name" property="roleName"/>
         <result column="accesses" property="accesses"/>
     </resultMap>
-    <insert id="inserRole" parameterType="o2oboot.entity.access.Role">
+    <insert id="inserRole" parameterType="o2oboot.entity.Role">
         insert into tb_role(role_id,role_name,accesses)
         values (#{roleId},#{roleName},#{accesses})
     </insert>

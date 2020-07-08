@@ -25,12 +25,12 @@ public class UserController {
     @Autowired
     private RoleUserMapService roleUserMapService;
 
-    @RequestMapping(value = "/checkusername",method = RequestMethod.GET)
+    @RequestMapping(value = "/checkEmail",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Object> checkusername (HttpServletRequest request){
-        String userId=request.getParameter("userId");
+    public Map<String,Object> checkEmail (HttpServletRequest request){
+        String email=request.getParameter("email");
 
-        int s = userService.checkUserId(userId);
+        int s = userService.checkEmail(email);
         Map<String,Object> map = new HashMap<>();
         if(s<1){
             map.put("success",false);
@@ -43,12 +43,14 @@ public class UserController {
     @RequestMapping(value = "/userSignUp",method = RequestMethod.GET)
     @ResponseBody
     public Map<String,Object> userSignUp (HttpServletRequest request){
-        String username=request.getParameter("username");
+        Long userId=userService.getMaxUSerId()+1;
         String userName=request.getParameter("username");
         String password=request.getParameter("password");
         String gender=request.getParameter("gender");
+        String email=request.getParameter("email");
+        String birth=request.getParameter("birth");
 
-        User user=new User(Long.valueOf(username),userName,password,gender);
+        User user=new User(userId,userName,password,gender,email,birth);
         int s=userService.addUser(user);
         Map<String,Object> map = new HashMap<>();
         if(s<1){
@@ -62,10 +64,10 @@ public class UserController {
     @RequestMapping(value = "/userSignIn",method = RequestMethod.GET)
     @ResponseBody
     public Map<String,Object> userSignIn (HttpServletRequest request){
-        String username=request.getParameter("username");
+        String email=request.getParameter("email");
         String password=request.getParameter("password");
-        request.getSession().setAttribute("currentUser",username);
-        int s=userService.checkUserSingIn(username,password);
+        request.getSession().setAttribute("currentUser",email);
+        int s=userService.checkUserSingIn(email,password);
         Map<String,Object> map = new HashMap<>();
         if(s<1){
             map.put("success",false);
@@ -78,9 +80,9 @@ public class UserController {
     @RequestMapping(value = "/userDetail",method = RequestMethod.GET)
     @ResponseBody
     public Map<String,Object> userDetail (HttpServletRequest request){
-        String username=request.getParameter("username");
+        String userId=request.getParameter("userId");
 
-        User user=userService.getUserDetail(username);
+        User user=userService.getUserDetail(userId);
         List<User> list = new ArrayList<>();
         list.add(user);
         Map<String,Object> map = new HashMap<>();
@@ -91,11 +93,13 @@ public class UserController {
     @RequestMapping(value = "/modifyUser",method = RequestMethod.GET)
     @ResponseBody
     public Map<String,Object> modifyUser (HttpServletRequest request){
-        String username=request.getParameter("username");
+        String userId=request.getParameter("userId");
         String userName=request.getParameter("username");
         String password=request.getParameter("password");
         String gender=request.getParameter("gender");
-        User user=new User(Long.valueOf(username),userName,password,gender);
+        String email=request.getParameter("email");
+        String birth=request.getParameter("birth");
+        User user=new User(Long.valueOf(userId),userName,password,gender,email,birth);
 
 
         int s=userService.modifyUser(user);
@@ -125,9 +129,6 @@ public class UserController {
         }else{
             map.put("success",true);
         }
-
         return map;
     }
-
-
 }
